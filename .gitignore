@@ -1,0 +1,5 @@
+.rsync
+acme/*
+!acme/.placeholder
+.charly-cloudflare-api.key
+traefik.toml

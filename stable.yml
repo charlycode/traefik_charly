@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  traefik:
+    container_name: traefik_charly
+    image: traefik:1.4.2
+    restart: always
+    networks:
+      - proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+      - ./traefik.toml:/traefik.toml
+      - ./acme:/etc/acme
+    env_file:
+      - ./.charly-cloudflare-api.key
+
+networks:
+  proxy:
+    driver: bridge
