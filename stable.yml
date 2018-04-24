@@ -3,7 +3,7 @@ version: '2'
 services:
   traefik:
     container_name: traefik_charly
-    image: traefik:1.4.2
+    image: traefik:1.4.5
     restart: always
     networks:
       - proxy
@@ -12,7 +12,7 @@ services:
       - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /etc/localtime:/etc/localtime:ro
+      - /usr/share/zoneinfo/America/Monterrey:/etc/localtime:ro
       - ./traefik.toml:/traefik.toml
       - ./acme:/etc/acme
     env_file:
